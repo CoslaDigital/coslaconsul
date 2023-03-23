@@ -25,7 +25,6 @@ module Budgets
     before_action :load_categories, only: :index
     before_action :set_default_investment_filter, only: :index
     before_action :set_view, only: :index
-    before_action :load_content_blocks, only: :index
 
     skip_authorization_check only: :json_data
 
@@ -122,7 +121,7 @@ module Budgets
       end
 
       def allowed_params
-        attributes = [:heading_id, :tag_list, :organization_name, :location,
+        attributes = [:price, :estimated_price, :heading_id, :tag_list, :organization_name, :location,
                       :terms_of_service, :related_sdg_list,
                       image_attributes: image_attributes,
                       documents_attributes: document_attributes,
@@ -147,10 +146,6 @@ module Budgets
 
       def load_categories
         @categories = Tag.category.order(:name)
-      end
-
-      def load_content_blocks
-        @heading_content_blocks = @heading.content_blocks.where(locale: I18n.locale) if @heading
       end
 
       def tag_cloud
