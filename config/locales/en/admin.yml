@@ -1329,6 +1329,9 @@ en:
         remote_census:
           title: Remote Census configuration
           how_to_enable: 'To configure remote census (SOAP) you must enable "Configure connection to remote census (SOAP)" on "Features" tab.'
+        cosla:
+          title: Experimental configuration
+          how_to_enable: 'To show the configuration options from Cosla Experimental you must enable Cosla on "Features" tab.'
         sdg:
           title: SDG configuration
           how_to_enable: 'To show the configuration options from Sustainable Development Goals you must enable "SDG" on "Features" tab.'
