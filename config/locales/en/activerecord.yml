@@ -177,8 +177,8 @@ en:
         description: "Description"
         external_url: "Link to additional documentation"
         administrator_id: "Administrator"
-        location: "Location additional info"
-        organization_name: "If you are proposing in the name of a collective/organization, or on behalf of more people, write its name"
+        location: "Tell us more about your organisation"
+        organization_name: "If you are proposing in the name of a partnership/organization, please tell us the name and the partners"
         image: "Proposal descriptive image"
         image_title: "Image title"
         duration: "Time scope"
@@ -197,7 +197,7 @@ en:
         valuation_tag_list: "Tags"
       budget/investment/translation:
         title: "Title"
-        description: "Description"
+        description: "Description of project (including breakdown of costs)"
       geozone:
         name: Name
         external_code: "External code (optional)"

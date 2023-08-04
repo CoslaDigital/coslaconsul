@@ -69,16 +69,16 @@ en:
       see_results: See results
       section_footer:
         title: Help with participatory budgets
-        description: With the participatory budgets the citizens decide to which projects is destined a part of the budget.
+        description: In participatory budgets the citizens decide to which projects are included in the budget.
       milestones: Milestones
     investments:
       form:
-        title: "Create a budget investment"
+        title: "Create a project application"
         subtitle: "%{heading} (%{price})"
         subtitle_without_price: "%{heading}"
         tag_category_label: "Categories"
         tags_instructions: "Tag this proposal. You can choose from proposed categories or add your own"
-        tags_label: Tags
+        tags_label: Themes
         tags_placeholder: "Enter the tags you would like to use, separated by commas (',')"
         map_location: "Map location"
         map_location_instructions: "Navigate the map to the location and place the marker."
@@ -109,9 +109,9 @@ en:
           change_ballot: "If you change your mind you can remove your votes in %{check_ballot} and start again."
           check_ballot_link: "submit my ballot"
           zero: You have not voted any investment project in this group.
-          verified_only: "To create a new budget investment %{verify}."
-          create: "Create a budget investment"
-          not_logged_in: "To create a new budget investment you must %{sign_in} or %{sign_up}."
+          verified_only: "To create a new project application %{verify}."
+          create: "Submit a project application"
+          not_logged_in: "To create a new project application you must %{sign_in} or %{sign_up}."
         filter: "Filtering projects by"
         filters:
           not_unfeasible: "Active"
@@ -129,7 +129,7 @@ en:
         author_deleted: User deleted
         price_explanation: Price explanation
         unfeasibility_explanation: Unfeasibility explanation
-        code: "Investment project code: <strong>%{code}</strong>"
+        code: "Project code: <strong>%{code}</strong>"
         location: "Location: <strong>%{location}</strong>"
         organization_name: "Proposed on behalf of: <strong>%{name}</strong>"
         share: Share
@@ -175,8 +175,8 @@ en:
         price: "Price"
         read_more: "Read more"
         supports: "Supports"
-      see_all: "See all investments"
-      title: "List of investments"
+      see_all: "See all projects"
+      title: "List of projects"
     show:
       see_results: See results
     supports_info:
@@ -200,8 +200,8 @@ en:
       show_all_link: Show all
       price: Price
       amount_available: Available budget
-      accepted: "Accepted investment: "
-      discarded: "Discarded investment: "
+      accepted: "Accepted project: "
+      discarded: "Discarded project: "
       incompatibles: Incompatibles
       investment_title: Project title
       investment_proyects: List of all investment projects
