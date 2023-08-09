@@ -200,9 +200,9 @@ en:
     footer:
       accessibility: Accessibility
       conditions: Terms and conditions of use
-      consul: CONSUL application
-      consul_url: https://github.com/consul/consul
-      copyright: CONSUL, %{year}
+      consul: CONSUL DEMOCRACY application
+      consul_url: https://github.com/consuldemocracy/consuldemocracy
+      copyright: CONSUL DEMOCRACY, %{year}
       description: This portal uses the %{consul} which is %{open_source}.
       open_source: open-source software
       open_source_url: http://www.gnu.org/licenses/agpl-3.0.html
@@ -274,6 +274,10 @@ en:
       sign_in: Sign in with Wordpress
       sign_up: Sign up with Wordpress
       name: Wordpress
+    saml:
+      sign_in: Sign in with Saml
+      sign_up: Sign up with Saml
+      name: Saml
     twitter:
       sign_in: Sign in with Twitter
       sign_up: Sign up with Twitter

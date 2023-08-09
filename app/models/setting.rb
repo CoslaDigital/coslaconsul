@@ -84,6 +84,7 @@ class Setting < ApplicationRecord
         "feature.google_login": true,
         "feature.twitter_login": true,
         "feature.wordpress_login": false,
+        "feature.saml_login": true,
         "feature.public_stats": true,
         "feature.signature_sheets": true,
         "feature.user.recommendations": true,
@@ -203,11 +204,11 @@ class Setting < ApplicationRecord
     end
 
     def default_main_org_name
-      "CONSUL"
+      "CONSUL DEMOCRACY"
     end
 
     def default_mailer_from_address
-      "noreply@#{Tenant.current_host.presence || "consul.dev"}"
+      "noreply@#{Tenant.current_host.presence || "consuldemocracy.dev"}"
     end
 
     def reset_defaults
