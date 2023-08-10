@@ -1,7 +1,7 @@
 <h2><%= question.title %></h2>
 <% question.answers_with_read_more.each do |answer| %>
   <div class="small-12 column end answer" id="answer_<%= answer.id %>">
-    <h3><%= answer.title %>"JOHN IS GREAT"</h3>
+    <h3><%= answer.title %></h3>
 
     <div class="margin-top">
       <% if answer.description.present? %>
