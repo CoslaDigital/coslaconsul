@@ -1,6 +1,6 @@
 class Polls::Questions::ReadMoreComponent < ApplicationComponent; end
 
-require_dependency Rails.root.join("app", "components", "polls", "read_more_component").to_s
+require_dependency Rails.root.join("app", "components", "polls", "questions", "read_more_component").to_s
 
 class Polls::Questions::ReadMoreComponent
   with_collection_parameter :question
