@@ -1,11 +1,10 @@
 module Types
-  class ProposalType < Types::BaseObject
+  class Budget_investmentType < Types::BaseObject
     field :comments, Types::CommentType.connection_type, null: true
     field :comments_count, Integer, null: true
     field :description, String, null: true
     field :geozone, Types::GeozoneType, null: true
     field :geozone_id, Integer, null: true
-    field :hot_score, Integer, null: true
     field :id, ID, null: false
     field :public_author, Types::UserType, null: true
     field :public_created_at, String, null: true
