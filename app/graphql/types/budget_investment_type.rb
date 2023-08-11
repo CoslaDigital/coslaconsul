@@ -1,5 +1,5 @@
 module Types
-  class Budget_investmentType < Types::BaseObject
+  class Budget_investmentsType < Types::BaseObject
     field :comments, Types::CommentType.connection_type, null: true
     field :comments_count, Integer, null: true
     field :description, String, null: true
