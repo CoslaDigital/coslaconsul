@@ -20,8 +20,8 @@ module Types
       argument :id, ID, required: true, default_value: false
     end
 
-    field :budget_investments, Types::Budget_investmentsType.connection_type, "Returns all investments", null: false
-    field :budget_investment, Types::Budget_investmentType, "Returns proposal for ID", null: false do
+    field :budget_investments, Types::Budget_investmentType.connection_type, "Returns all investments", null: false
+    field :budget_investment, Types::Budget_investmentType, "Returns investment for ID", null: false do
       argument :id, ID, required: true, default_value: false
     end
 
@@ -72,7 +72,9 @@ module Types
     def budget_investments
       Budget_investment.public_for_api
     end
-
+   def budget_investment(id:)
+      Budget_investment.find(id)
+    end
     def proposals
       Proposal.public_for_api
     end
