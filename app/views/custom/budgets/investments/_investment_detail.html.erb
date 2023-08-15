@@ -28,9 +28,19 @@
               <%= investment.formatted_estimated_price %>
             </p>
 <hr>
+
+ <div>
+
+
+<h3><%= t("proposals.show.summary") %></h3>
+<%= auto_link_already_sanitized_html wysiwyg(investment.summary) %>
+
+<hr>
 <h3><%= t("budgets.investments.show.description") %></h3>
 <%= auto_link_already_sanitized_html wysiwyg(investment.description) %>
 
+</div>
+<hr>
 <% if @investment.video_url.present? %>
 <hr>
   <div class="small-12 medium-7 small-centered">

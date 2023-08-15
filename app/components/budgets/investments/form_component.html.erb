@@ -29,6 +29,13 @@
               maxlength: Budget::Investment.description_max_length,
               class: "html-area" %>
       </div>
+<div>
+        <%= translations_form.text_area :summary,
+                                        rows: 4, maxlength: 200,
+                                        hint: t("proposals.form.proposal_summary_note") %>
+      </div>
+
+
       <div>
           <h2> Estimated Cost </h2>
           <%= f.number_field :estimated_price%>

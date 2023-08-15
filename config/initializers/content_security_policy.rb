@@ -18,18 +18,18 @@
 
 Rails.application.config.content_security_policy do |policy|
  #   policy.default_src :none
-    policy.connect_src :self, :https
-    policy.font_src    :self, :https, :data
-    policy.img_src     :self, :https, :data
-    policy.object_src  :none
-    policy.script_src  :unsafe_inline, :https
+  #  policy.connect_src :self, :https
+   # policy.font_src    :self, :https, :data
+    #policy.img_src     :self, :https, :data
+   # policy.object_src  :none
+  #  policy.script_src  :unsafe_inline, :https
  #   policy.script_src :self, :https
-    policy.style_src   :unsafe_inline, :https
+  #  policy.style_src   :unsafe_inline, :https
  #   policy.form_action :self
-    policy.base_uri    :self
-    policy.frame_ancestors :none
+  #  policy.base_uri    :self
+ #   policy.frame_ancestors :none
  #   # Specify URI for violation reports
-    policy.report_uri "/privacy"
+#    policy.report_uri "/privacy"
  end
 
 

@@ -22,7 +22,11 @@
               data: suggest_data(investment) %>
       </div>
       <div class="js-suggest" data-locale="<%= translations_form.locale %>"></div>
-
+ <div>
+        <%= f.text_area :summary,
+                                        rows: 4, maxlength: 500,
+                                        hint: t("proposals.form.proposal_summary_note") %>
+      </div>
     
       <div>
         <%= translations_form.text_area :description,
