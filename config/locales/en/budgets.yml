@@ -76,6 +76,7 @@ en:
         title: "Create a project application"
         subtitle: "%{heading} (%{price})"
         subtitle_without_price: "%{heading}"
+        summary: "Project Summary"
         tag_category_label: "Categories"
         tags_instructions: "Tag this proposal. You can choose from proposed categories or add your own"
         tags_label: Themes
