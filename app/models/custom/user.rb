@@ -139,8 +139,6 @@ class User < ApplicationRecord
     oauth_verified        = auth.info.verified || auth.info.verified_email || auth.info.email_verified || auth.extra.raw_info.email_verified
     oauth_email_confirmed = oauth_email.present? && oauth_verified
     oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
-#Rails.logger.info("auth verified #{auth.info.verified}")
-#Rails.logger.info("google email verified #{auth.info.extra.raw_info.email_verified}")
 Rails.logger.info("oauth_email #{oauth_email}")
 Rails.logger.info("oauth_verified #{oauth_verified}")
 Rails.logger.info("oauth_confirmed #{oauth_email_confirmed}")
@@ -158,37 +156,78 @@ Rails.logger.info("oauth_user #{oauth_user}")
     )
   end
   
+  
+
+
 
 # Get the existing user by email if the provider gives us a verified email.
   def self.first_or_initialize_for_saml(auth)
-    # Log the attributes in auth.info
-  Rails.logger.info('Attributes in auth.info:')
-    auth.info.each do |key, value|
-    Rails.logger.info("#{key}: #{value}")
+
+# Assuming 'auth.extra.raw_info' is the OneLogin::RubySaml::Attributes object
+attributes = auth.extra.raw_info.attributes
+
+
+# Define a mapping of attribute names to OID values
+attribute_mapping = {
+  "saml_username" => "urn:oid:0.9.2342.19200300.100.1.1",
+  "saml_authority_code" => "urn:oid:0.9.2342.19200300.100.1.20",
+  "saml_firstname" => "urn:oid:0.9.2342.19200300.100.1.2",
+  "saml_surname" => "urn:oid:0.9.2342.19200300.100.1.4",
+  "saml_latitude" => "urn:oid:0.9.2342.19200300.100.1.33",
+  "saml_longitude" => "urn:oid:0.9.2342.19200300.100.1.34",
+  "saml_date_of_birth" => "urn:oid:0.9.2342.19200300.100.1.8",
+  "saml_gender" => "urn:oid:0.9.2342.19200300.100.1.9",
+  "saml_postcode" => "urn:oid:0.9.2342.19200300.100.1.16",
+  "saml_email" => "urn:oid:0.9.2342.19200300.100.1.22",
+  "saml_town" => "urn:oid:0.9.2342.19200300.100.1.15"
+}
+
+# Initialize a hash to store the extracted values
+extracted_values = {}
+
+# Iterate through the attribute mapping and extract values
+attribute_mapping.each do |attribute_name, oid_value|
+  if attributes[oid_value]
+    extracted_values[attribute_name] = attributes[oid_value][0]
   end
-  Rails.logger.info( auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.1", 0).to_s)
-  Rails.logger.info( auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.2", 0).to_s)
- Rails.logger.info( auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.3", 0).to_s)
-  Rails.logger.info( auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.4", 0).to_s)
-  Rails.logger.info( auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.5", 0).to_s)
-   Rails.logger.info( auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.6", 0).to_s)
-    oauth_username           = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.1", 0).to_s
-    oauth_email           = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.22", 0).to_s
+end
+
+# Now you have a hash containing the extracted values
+Rails.logger.info("extracted values: #{extracted_values.inspect}")
+
+# Assuming 'extracted_values' is the hash containing extracted values
+saml_username = extracted_values["saml_username"]
+saml_authority_code = extracted_values["saml_authority_code"]
+saml_firstname = extracted_values["saml_firstname"]
+saml_surname = extracted_values["saml_surname"]
+saml_long = extracted_values["saml_longitude"]
+saml_lat = extracted_values["saml_latitude"]
+saml_date_of_birth = extracted_values["saml_date_of_birth"]
+saml_gender = extracted_values["saml_gender"]
+saml_postcode = extracted_values["saml_postcode"]
+saml_email = extracted_values["saml_email"]
+saml_town = extracted_values["saml_town"]
+
+    oauth_email = saml_email
+    oauth_gender = saml_gender
+    oauth_username = saml_username
+    oauth_lacode = saml_authority_code      
+    oauth_full_name = saml_firstname + "_" + saml_surname
+    oauth_date_of_birth = saml_date_of_birth
     oauth_email_confirmed = oauth_email.present?
+    saml_email_confirmed = saml_email.present?
    # oauth_email_confirmed = oauth_email.present? && (auth.info.verified || auth.info.verified_email)
-    oauth_lacode              = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.17", 0).to_s
-    oauth_full_name           = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.2", 0).to_s + "_" + auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.4", 0).to_s
-    oauth_date_of_birth = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.8", 0).to_s
-    oauth_gender = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.9", 0).to_s
-    #lacode comes from list of councils registered with IS
-    oauth_lacode_ref          = "9079"
+   # oauth_lacode              = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.17", 0).to_s
+   # oauth_full_name           = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.2", 0).to_s + "_" + auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.4", 0).to_s
+   # oauth_date_of_birth = value_1_8
+   # oauth_date_of_birth = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.8", 0)
+   # oauth_gender = auth.extra.raw_info.all.dig("urn:oid:0.9.2342.19200300.100.1.9", 0).to_s
+   #lacode comes from list of councils registered with IS
+    oauth_lacode_ref          = "9079" # this should be picked up from secrets in future
     oauth_lacode_confirmed    = oauth_lacode == oauth_lacode_ref
-    oauth_user            = User.find_by(email: oauth_email) if oauth_email_confirmed
-  #  oauth_username = oauth_full_name ||  oauth_email.split("@").first || auth.info.name || auth.uid
-   # if oauth_username == oauth_full_name
-   #      oauth_username = "#{oauth_full_name}_#{rand(100..999)}"
-   #   end
-  if oauth_username.present? && oauth_username != oauth_email && oauth_username != oauth_full_name
+    oauth_user            = User.find_by(email: saml_email) if saml_email_confirmed
+   # oauth_username = oauth_full_name ||  oauth_email.split("@").first || auth.info.name || auth.uid
+   if oauth_username.present? && oauth_username != oauth_email && oauth_username != oauth_full_name
       oauth_username = oauth_username
    else
    # If the original value of oauth_username is the same as oauth_email or oauth_full_name, add a random numbe
@@ -196,9 +235,9 @@ Rails.logger.info("oauth_user #{oauth_user}")
    end
     oauth_user || User.new(
       username:  oauth_username,
-      email: oauth_email,
-      #date_of_birth: oauth_date_of_birth,
-      gender: oauth_gender,
+      email: saml_email,
+      date_of_birth: saml_date_of_birth,
+      gender: saml_gender,
       password: Devise.friendly_token[0, 20],
       terms_of_service: "1",
       confirmed_at: DateTime.current,
