@@ -23,7 +23,7 @@ Rails.application.config.content_security_policy do |policy|
     policy.img_src     :self, :https, :data
     policy.object_src  :none
 #    policy.script_src  :unsafe_inline, :https
-    policy.script_src :self, :https
+    policy.script_src :self,  :unsafe_inline, :https
     policy.style_src  :self,  :unsafe_inline, :https
     policy.form_action :self,  :unsafe_inline, :https
     policy.base_uri    :self
