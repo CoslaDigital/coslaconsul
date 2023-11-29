@@ -709,7 +709,6 @@ DEPENDENCIES
   email_spec (~> 2.2.0)
   erb_lint (~> 0.3.1)
   factory_bot_rails (~> 6.2.0)
-  faker (~> 2.22.0)
   file_validators (~> 3.0.0)
   font-awesome-sass (~> 5.15.1)
   foundation-rails (~> 6.6.2.0)
