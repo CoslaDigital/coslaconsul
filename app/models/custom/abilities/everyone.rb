@@ -3,6 +3,10 @@ module Abilities
     include CanCan::Ability
 
     def initialize(user)
+      if user&.guest?
+        can :answer, Poll
+        can :answer, Poll::Question
+      end
       can [:read, :map], Debate
       can [:read, :map, :summary, :share, :create, :created, :publish, :share], Proposal
       can :read, Comment
