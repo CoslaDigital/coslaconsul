@@ -39,7 +39,8 @@
   }
 
   .budget-header .main-link{
-    display: flex;
+    display: inline-block;
+    vertical-align: middle;
     justify-content: center;
     width: 60%;
     text-align:center;
