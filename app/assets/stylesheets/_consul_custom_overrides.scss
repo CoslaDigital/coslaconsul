@@ -39,13 +39,26 @@
   }
 
   .budget-header .main-link{
-     justify-content: center;
-     width: 60%;
-     margin-left:20%;
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    text-align:center;
+    margin: 0.5rem 0;
+    margin-right:20%;
+    margin-left:20%;
   }
 
   .lead {
     max-width: 48ch;
     font-size:1.4rem;
     margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .budget-header.with-background-image {
+    padding-bottom: 5rem;
+  }
+  .budget-header h1 {
+    padding: 1.5rem 0 .5rem;
   }
