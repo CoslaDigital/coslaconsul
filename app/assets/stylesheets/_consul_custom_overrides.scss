@@ -15,7 +15,7 @@
   $main-header: $brand;
   $brand-secondary: darken($brand, 20%);
   $top-links: $brand-secondary ;
-  $footer: #fbe0e0;
+  $footer: lighten($brand-secondary, 70%);
   $info-bg: complement($brand);
 
 
