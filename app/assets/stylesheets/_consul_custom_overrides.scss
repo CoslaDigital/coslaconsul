@@ -20,7 +20,7 @@
 
 
   .admin-sidebar {
-    background: linear-gradient(to bottom, complement($brand-secondary) 0%, $brand 100%);
+    background: linear-gradient(to bottom, complement($brand-secondary) 0%, $brand 100%) !important;
   }
 
   .budget-header .row{
