@@ -19,13 +19,15 @@
       <div>
         <%= translations_form.text_field :title,
                                          maxlength: Budget::Investment.title_max_length,
-                                         data: suggest_data(investment) %>
+                                         data: suggest_data(investment),
+                                         value: investment&.title %>
       </div>
       <div class="js-suggest" data-locale="<%= translations_form.locale %>"></div>
 
       <div>
         <%= translations_form.text_area :description,
                                         maxlength: Budget::Investment.description_max_length,
+                                        value: investment&.description,
                                         class: "html-area" %>
       </div>
     <% end %>
@@ -48,7 +50,7 @@
       <div>
         <%= render "map_locations/form_fields",
                    form: f,
-                   map_location: investment.map_location || MapLocation.new,
+                   map_location: investment&.map_location || MapLocation.new,
                    label: t("budgets.investments.form.map_location"),
                    help: t("budgets.investments.form.map_location_instructions"),
                    i18n_namespace: "budgets.investments" %>
