@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="small-12 medium-6 column">
     <% if budget.show_money? %>
       <%= f.text_field :price, maxlength: 8 %>
@@ -24,6 +25,7 @@
                    include_blank: t("geozones.none"),
                    hint: t("admin.budget_headings.form.geozone_info") %>
     <% end %>
+
     
     <% if heading.budget.approval_voting? %>
       <%= f.number_field :max_ballot_lines,
@@ -59,6 +61,7 @@
       <p class="help-text" id="budgets-coordinates-help-text">
         <%= t("admin.budget_headings.form.coordinates_info") %>
       </p>
+
 
       <%= f.check_box :allow_custom_content %>
       <p class="help-text" id="budgets-content-blocks-help-text">

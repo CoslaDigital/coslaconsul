@@ -7,6 +7,7 @@ class Budgets::Investments::FormComponent < ApplicationComponent
   def initialize(investment, url:)
     @investment = investment
     @url = url
+    log_investment_attributes
   end
 
   private
@@ -18,4 +19,9 @@ class Budgets::Investments::FormComponent < ApplicationComponent
     def categories
       Tag.category.order(:name)
     end
+    
+    def log_investment_attributes
+      Rails.logger.info "Investment Attributes: #{investment.attributes.inspect}"
+    end
+
 end
