@@ -11,13 +11,9 @@
           <% end %>
         </ul>
       </div>
-
+   
+      <%= render Shared::MapLocationComponent.new(nil, geozones_data: geozones_data) %>
     </div>
-     <div>
-      <div class="budget-investments-map">
-         <%= render Shared::MapLocationComponent.new(nil, geozones_data: geozones_data) %>
-      </div> 
-      </div>
     <h2><%= t("map.proposal_for_district") %></h2>
 
     <%= form_for(@proposal, url: new_proposal_path, method: :get) do |f| %>
