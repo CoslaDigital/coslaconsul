@@ -135,6 +135,10 @@ class Budget < ApplicationRecord
     phase == "balloting"
   end
 
+  def balloted?
+    phases.exists?(kind: 'balloting', enabled: true)
+  end
+
   def reviewing_ballots?
     phase == "reviewing_ballots"
   end

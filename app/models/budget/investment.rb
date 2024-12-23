@@ -363,7 +363,7 @@ end
     end
 
     def should_show_vote_count?
-      budget.valuating?
+      budget.valuating? || (budget.valuating_or_later? && !balloted?)
     end
 
     def should_show_ballots?
