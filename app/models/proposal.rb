@@ -65,7 +65,7 @@ class Proposal < ApplicationRecord
 
   after_create :send_new_actions_notification_on_create
 
-#  scope :sort_by_random,           -> { reorder(Arel.sql('RANDOM()')) }
+  scope :sort_by_random,           -> { reorder(Arel.sql('RANDOM()')) }
   scope :for_render,               -> { includes(:tags) }
   scope :sort_by_hot_score,        -> { reorder(hot_score: :desc) }
   scope :sort_by_confidence_score, -> { reorder(confidence_score: :desc) }
