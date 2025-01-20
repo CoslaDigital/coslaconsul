@@ -65,6 +65,7 @@ class Proposal < ApplicationRecord
 
   after_create :send_new_actions_notification_on_create
 
+#  scope :sort_by_random,           -> { reorder(Arel.sql('RANDOM()')) }
   scope :for_render,               -> { includes(:tags) }
   scope :sort_by_hot_score,        -> { reorder(hot_score: :desc) }
   scope :sort_by_confidence_score, -> { reorder(confidence_score: :desc) }
@@ -233,7 +234,7 @@ class Proposal < ApplicationRecord
   end
 
   def self.proposals_orders(user)
-    orders = %w[hot_score confidence_score created_at relevance archival_date]
+    orders = %w[hot_score random created_at relevance archival_date]
 
     if Setting["feature.user.recommendations_on_proposals"] && user&.recommended_proposals
       orders << "recommendations"

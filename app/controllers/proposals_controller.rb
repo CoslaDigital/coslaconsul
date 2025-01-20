@@ -6,13 +6,15 @@ class ProposalsController < ApplicationController
   include DocumentAttributes
   include MapLocationAttributes
   include Translatable
-
+  include RandomSeed
+  
   before_action :load_categories, only: [:index, :map, :summary]
   before_action :load_geozones #, only: [:edit, :map, :summary]
   before_action :authenticate_user!, except: [:index, :show, :map, :summary]
   before_action :set_view, only: :index
   before_action :proposals_recommendations, only: :index, if: :current_user
-
+  before_action :set_random_seed, only: :index
+  
   feature_flag :proposals
   
   helper_method :geozones_data

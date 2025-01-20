@@ -336,6 +336,7 @@ en:
         most_commented: most commented
         relevance: relevance
         archival_date: archived
+        random: random
         recommendations: recommendations
       recommendations:
         without_results: There are not proposals related to your interests
