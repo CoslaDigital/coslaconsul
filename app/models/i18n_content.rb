@@ -89,6 +89,7 @@ class I18nContent < ApplicationRecord
       shared.tags_cloud.districts
       shared.tags_cloud.districts_list
       proposals.index.orders.random
+      proposals.index.orders.title
       proposals.index.section_footer.title
       proposals.index.section_footer.description
       proposals.new.more_info

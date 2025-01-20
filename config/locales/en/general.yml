@@ -338,6 +338,7 @@ en:
         archival_date: archived
         random: random
         recommendations: recommendations
+        title: by title
       recommendations:
         without_results: There are not proposals related to your interests
         without_interests: Follow proposals so we can give you recommendations
