@@ -81,8 +81,6 @@ class I18nContent < ApplicationRecord
       debates.new.recommendation_three
       debates.new.recommendation_four
       debates.new.recommendations_title
-      devise.sessions.local_sign_in_title
-      devise.sessions.local_sign_in_description
       proposals.index.section_footer.title
       proposals.index.section_footer.description
       proposals.new.more_info
