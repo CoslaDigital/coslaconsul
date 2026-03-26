@@ -1,3 +1,4 @@
+Rails.root.join("app", "controllers", "concerns","guest_users.rb")
 module GuestUsers
   extend ActiveSupport::Concern
 
